@@ -9,7 +9,6 @@ def product(a, b):
         -4
     """
     return a * b
-
 #2
 def weekday_name(day_of_week):
     """Return name of weekday.
@@ -25,8 +24,16 @@ def weekday_name(day_of_week):
         >>> weekday_name(9)
         >>> weekday_name(0)
     """
-    days = [ "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
-        
+    DAYS = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+    ]
+
     if day_of_week < 1 or day_of_week > 7:
         return None
 
@@ -44,7 +51,6 @@ def last_element(lst):
     """
     if lst:
         return lst[-1]
-
 #4
 def number_compare(a, b):
     """Report on whether a>b, b>a, or b==a
@@ -64,6 +70,7 @@ def number_compare(a, b):
         return "Second is greater"
     else:
         return "Numbers are equal"
+
 #5
 def reverse_string(phrase):
     """Reverse string,
@@ -108,7 +115,6 @@ def multiple_letter_count(phrase):
         count[ltr] = count.get(ltr, 0) + 1
 
     return count
-
 #8
 def list_manipulation(lst, command, location, value=None):
     """Mutate lst to add/remove from beginning or end.
@@ -190,12 +196,10 @@ def is_palindrome(phrase):
         >>> is_palindrome('Noon')
         True
     """
+    #had to lok at solution
 
-    rev = ''.join(reversed(phrase))
-    if (phrase == rev):
-        return True
-    return False
-
+    normalized = phrase.lower().replace(' ', '')
+    return normalized == normalized[::-1]
 #10
 def frequency(lst, search_term):
     """Return frequency of term in lst.
@@ -207,7 +211,7 @@ def frequency(lst, search_term):
         0
     """
     return lst.count(search_term)
-
+    
 #11
 def flip_case(phrase, to_swap):
     """Flip [to_swap] case each time it appears in phrase.
@@ -272,11 +276,7 @@ def compact(lst):
         [1, 2, 'All done']
     """
     
-    new_list = []
-    for item in list:
-        if item == False:
-            return removed(item)
-    return new_list.append(item)
+    return [val for val in lst if val]
 #15
 def intersection(l1, l2):
     """Return intersection of two lists as a new list::
@@ -293,7 +293,7 @@ def intersection(l1, l2):
         >>> intersection([1, 2, 3], [4, 5, 6])
         []
     """
-    return list(set(l1 & l2))
+    return list(set(l1) & set(l2))
 #16
 def partition(lst, fn):
     """Partition lst by predicate.
@@ -385,7 +385,7 @@ def calculate(operation, a, b, make_int=False, message='The result is'):
     if make_int:
         res = int(res)
 
-    return f"{message} {res
+    return f"{message} {res}"
 
 #19
 def friend_date(a, b):
@@ -479,8 +479,8 @@ def list_check(lst):
     for item in lst:
         if not isinstance(item, list):
             return False
-        else:
-            True
+
+    return True
 #24
 def remove_every_other(lst):
     """Return a new list of other item.
@@ -535,7 +535,10 @@ def sum_pairs(nums, goal):
 
     return ()
 
+
 #26
+VOWELS = set("aeiou")
+
 def vowel_count(phrase):
     """Return frequency map of vowels, case-insensitive.
 
@@ -711,7 +714,7 @@ def two_list_dictionary(keys, values):
         {'a': 1, 'b': 2, 'c': 3}
    """
    #had to look at solution
-   out = {}
+    out = {}
 
     for idx, val in enumerate(keys):
         out[val] = values[idx] if idx < len(values) else None
@@ -762,7 +765,32 @@ def same_frequency(num1, num2):
         True
     """
     #had to look at solution
+def freq_counter(coll):
+    """Returns frequency counter mapping of coll."""
+
+    counts = {}
+
+    for x in coll:
+        counts[x] = counts.get(x, 0) + 1
+
+    return counts
+
+
+def same_frequency(num1, num2):
+    """Do these nums have same frequencies of digits?
+
+        >>> same_frequency(551122, 221515)
+        True
+
+        >>> same_frequency(321142, 3212215)
+        False
+
+        >>> same_frequency(1212, 2211)
+        True
+    """
+
     return freq_counter(str(num1)) == freq_counter(str(num2))
+
 #35
 def two_oldest_ages(ages):
     """Return two distinct oldest ages as tuple (second-oldest, oldest)..
@@ -791,7 +819,6 @@ def two_oldest_ages(ages):
     # you may find it helpful to research the `sorted(iter)` function, which
     # can take *any* type of list-like-thing, and returns a new, sorted list
     # from it.
-
 #36
 def find_the_duplicate(nums):
     """Find duplicate number in nums.
@@ -893,7 +920,3 @@ def find_greater_numbers(nums):
                 count += 1
 
     return count
-
-
-
-
